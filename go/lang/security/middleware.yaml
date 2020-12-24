@@ -1,0 +1,8 @@
+rules:
+- id: no-auth-middleware
+  message: A route was found without middleware, this could indicate a lack of authentication.
+  languages: [go]
+  severity: WARNING
+  pattern-either: 
+   - pattern: router.$A($Z, http.HandlerFunc(...))
+   - pattern: router.$B($X).$C(...)

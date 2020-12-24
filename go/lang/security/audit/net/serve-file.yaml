@@ -1,0 +1,8 @@
+rules:
+- id: serve-file-dir-traversal 
+  message: | 
+    Using http.ServeFile with filepath.Join can lead to directory traversal attacks and local file disclosure. 
+    Make sure filepath.Join does not take user controlled input.
+  languages: [go]
+  severity: WARNING
+  pattern: http.ServeFile(... , ... , filepath.Join($A,$B))

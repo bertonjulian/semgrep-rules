@@ -1,0 +1,9 @@
+rules:
+- id: cors-origin-header-configured-wildcard
+  message: | 
+     Configuring CORS headers with a wildcard (*) allows your API to be called from any origin. 
+  languages: [go]
+  severity: WARNING
+  pattern-either: 
+  - pattern: handlers.AllowedOrigins([]string{"*"})
+  - pattern: $A.Header().Set("Access-Control-Allow-Origin", "*")
